@@ -1,0 +1,332 @@
+:root {
+    --primary-color: #7B2CBF;
+    --secondary-color: #9D4EDD;
+    --accent-color: #FF9E00;
+    --success-color: #06D6A0;
+    --danger-color: #EF476F;
+    --background-color: #F8F9FA;
+    --card-bg: #FFFFFF;
+    --text-color: #2B2D42;
+    --text-light: #8D99AE;
+    --border-radius: 20px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #FFD6FF 0%, #C8B6FF 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+h1, h2, h3 {
+    font-family: 'Fredoka', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.lang-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.lang-btn {
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.lang-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #240046;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+header p {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.card.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: #F8FAFC;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(157, 78, 221, 0.2);
+    background-color: #FFF;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    color: white;
+}
+
+.primary-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 15px rgba(123, 44, 191, 0.3);
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(123, 44, 191, 0.4);
+}
+
+.success-btn {
+    background: linear-gradient(45deg, #06D6A0, #118AB2);
+    box-shadow: 0 4px 15px rgba(6, 214, 160, 0.3);
+}
+
+.success-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(6, 214, 160, 0.4);
+}
+
+/* Loading State */
+#loading-section {
+    text-align: center;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1.5rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Quiz Styles */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px dashed #E2E8F0;
+}
+
+.quiz-header h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.badge {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.question-block {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: #F8FAFC;
+    border-radius: 15px;
+    border-left: 5px solid var(--secondary-color);
+}
+
+.question-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #2B2D42;
+}
+
+.options-container {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 2px solid #E2E8F0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.option-label .icon {
+    margin-left: auto;
+    font-size: 1.2rem;
+}
+
+.option-label:hover {
+    border-color: var(--secondary-color);
+    background: #F3E8FF;
+}
+
+.option-input {
+    display: none;
+}
+
+.option-input:checked + .option-label {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.option-label.correct {
+    background: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.option-label.wrong {
+    background: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+.explanation {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #E0Fbfc;
+    border-radius: 10px;
+    color: #3D5A80;
+    font-weight: 600;
+    display: none;
+}
+
+.explanation.visible {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Results section */
+#results-section {
+    text-align: center;
+}
+
+#results-section h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.score-display {
+    font-size: 4rem;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+#score-message {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}

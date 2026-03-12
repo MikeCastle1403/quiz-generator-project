@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quiz Generator</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="lang-container">
+        <button id="lang-toggle" class="lang-btn">🇪🇸 Español</button>
+    </div>
+    <div class="container">
+        <header>
+            <h1 data-i18n="title">✨ AI Quiz Generator ✨</h1>
+            <p data-i18n="subtitle">Generate a fun quiz on any topic!</p>
+        </header>
+
+        <main>
+            <!-- Setup Section -->
+            <section id="setup-section" class="card active">
+                <form id="quiz-form">
+                    <div class="form-group">
+                        <label for="topic" data-i18n="topic_label">Topic</label>
+                        <input type="text" id="topic" name="topic" placeholder="e.g. Python, Space, History..." required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="size" data-i18n="size_label">Number of Questions</label>
+                            <select id="size" name="size">
+                                <option value="10" data-i18n="size_small">Small (10)</option>
+                                <option value="20" data-i18n="size_medium">Medium (20)</option>
+                                <option value="30" data-i18n="size_big">Big (30)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="difficulty" data-i18n="diff_label">Difficulty</label>
+                            <select id="difficulty" name="difficulty">
+                                <option value="easy" data-i18n="diff_easy">Easy 🟢</option>
+                                <option value="normal" data-i18n="diff_normal" selected>Normal 🟡</option>
+                                <option value="hard" data-i18n="diff_hard">Hard 🔴</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="generate-btn" class="btn primary-btn" data-i18n="btn_generate">Generate Quiz 🚀</button>
+                </form>
+            </section>
+
+            <!-- Loading State -->
+            <section id="loading-section" class="card hidden">
+                <div class="loader"></div>
+                <h2 data-i18n="loading_title">Generating your quiz...</h2>
+                <p data-i18n="loading_desc">Asking Gemini for the best questions!</p>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz-section" class="card hidden">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Quiz Topic</h2>
+                    <span class="badge" id="quiz-info">10 Questions | Normal</span>
+                </div>
+                
+                <div id="questions-container">
+                    <!-- Questions injected here by JS -->
+                </div>
+
+                <div class="quiz-footer">
+                    <button id="submit-quiz-btn" class="btn success-btn" data-i18n="btn_submit">Submit Answers 🎯</button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="card hidden">
+                <h2 data-i18n="results_title">🎉 Quiz Complete! 🎉</h2>
+                <div class="score-display">
+                    <span id="score-text">0 / 10</span>
+                </div>
+                <p id="score-message">Great job!</p>
+                <button id="restart-btn" class="btn primary-btn" data-i18n="btn_restart">Create Another Quiz 🔄</button>
+            </section>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
